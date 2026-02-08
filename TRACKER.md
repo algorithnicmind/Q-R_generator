@@ -99,7 +99,19 @@
 | 10  | Error handling          | Ankit    | ✅ Done | 2026-02-08 |
 | 11  | Frontend UI             | Ankit    | ✅ Done | 2026-02-08 |
 | 12  | API Integration         | Ankit    | ✅ Done | 2026-02-08 |
-| 13  | Deploy to Vercel        | Ankit    | ✅ Done | 2026-02-08 |
+
+| 13 | Deploy to Vercel | Ankit | ✅ Done | 2026-02-08 |
+| 14 | User Authentication | Ankit | ✅ Done | 2026-02-08 |
+
+### ✅ Completed (Phase 2 Additions)
+
+| Task ID | Task                        | Completed By | Date       | Notes                               |
+| ------- | --------------------------- | ------------ | ---------- | ----------------------------------- |
+| BE-13   | Implement User Model & JWT  | Ankit        | 2026-02-08 | ✅ Secure password hashing & tokens |
+| BE-14   | Create Auth Middleware      | Ankit        | 2026-02-08 | ✅ Protect routes with Bearer token |
+| FE-09   | Create Login/Register Pages | Ankit        | 2026-02-08 | ✅ Styled auth forms                |
+| FE-10   | Implement Auth Logic (JS)   | Ankit        | 2026-02-08 | ✅ Token storage, redirect, logout  |
+| INT-04  | Secure All API Routes       | Ankit        | 2026-02-08 | ✅ Multi-tenant data segregation    |
 
 ---
 

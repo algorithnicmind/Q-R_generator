@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://q-r-generator.vercel.app/sitemap.xml

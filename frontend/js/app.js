@@ -3,7 +3,51 @@
  */
 
 // API Base URL
+// API Base URL
 const API_BASE = '/api';
+
+// Authentication Check
+const token = localStorage.getItem('token');
+if (!token) {
+  window.location.href = 'login.html';
+}
+
+// Secure Fetch Helper
+async function fetchWithAuth(url, options = {}) {
+  const headers = {
+    ...options.headers,
+    'Authorization': `Bearer ${token}`
+  };
+  
+  const response = await fetch(url, { ...options, headers });
+  
+  if (response.status === 401) {
+    // Token expired or invalid
+    localStorage.removeItem('token');
+    window.location.href = 'login.html';
+    return;
+  }
+  
+  return response;
+}
+
+// User Info
+const user = JSON.parse(localStorage.getItem('user') || '{}');
+document.addEventListener('DOMContentLoaded', () => {
+  const userDisplay = document.getElementById('userDisplay');
+  if (userDisplay && user.name) {
+    userDisplay.textContent = `👤 ${user.name}`;
+  }
+  
+  // Add logout button listener if it exists
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = 'login.html';
+    });
+  }
+});
 
 // State
 let currentPage = 1;
@@ -116,7 +160,7 @@ elements.qrForm.addEventListener('submit', async (e) => {
   setLoading(true);
   
   try {
-    const response = await fetch(`${API_BASE}/qr`, {
+    const response = await fetchWithAuth(`${API_BASE}/qr`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(formData)
@@ -201,7 +245,7 @@ async function loadQRCodes(page = 1) {
   `;
   
   try {
-    const response = await fetch(`${API_BASE}/qr?page=${page}&limit=10&status=${status}`);
+    const response = await fetchWithAuth(`${API_BASE}/qr?page=${page}&limit=10&status=${status}`);
     const result = await response.json();
     
     if (!response.ok) {
@@ -301,7 +345,7 @@ async function viewQRStats(qrCodeId) {
   openModal('<div class="loading-state"><span class="loader"></span><p>Loading stats...</p></div>');
   
   try {
-    const response = await fetch(`${API_BASE}/qr/${qrCodeId}/stats`);
+    const response = await fetchWithAuth(`${API_BASE}/qr/${qrCodeId}/stats`);
     const result = await response.json();
     
     if (!response.ok) {
@@ -366,7 +410,7 @@ async function editQR(qrCodeId) {
   openModal('<div class="loading-state"><span class="loader"></span><p>Loading...</p></div>');
   
   try {
-    const response = await fetch(`${API_BASE}/qr/${qrCodeId}`);
+    const response = await fetchWithAuth(`${API_BASE}/qr/${qrCodeId}`);
     const result = await response.json();
     
     if (!response.ok) {
@@ -438,7 +482,7 @@ async function saveQREdit(event, qrCodeId) {
   };
   
   try {
-    const response = await fetch(`${API_BASE}/qr/${qrCodeId}`, {
+    const response = await fetchWithAuth(`${API_BASE}/qr/${qrCodeId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updateData)
@@ -468,7 +512,7 @@ async function deleteQR(qrCodeId) {
   }
   
   try {
-    const response = await fetch(`${API_BASE}/qr/${qrCodeId}`, {
+    const response = await fetchWithAuth(`${API_BASE}/qr/${qrCodeId}`, {
       method: 'DELETE'
     });
     

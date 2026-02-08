@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <title>Register - Smart QR Generator</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .auth-container {
+      max-width: 400px;
+      margin: 4rem auto;
+      padding: 2rem;
+    }
+    .auth-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .auth-link {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: var(--color-text-muted);
+    }
+    .auth-link a {
+      color: var(--color-accent-primary);
+      text-decoration: none;
+    }
+    .auth-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="logo">
+        <span class="logo-icon">🔳</span>
+        <span class="logo-text">Smart QR</span>
+      </div>
+    </header>
+
+    <main class="auth-container card">
+      <h1 class="auth-title">Create Account</h1>
+      
+      <form id="registerForm">
+        <div class="form-group">
+          <label class="form-label" for="name">Full Name</label>
+          <input type="text" id="name" class="form-input" required placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input type="email" id="email" class="form-input" required placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" class="form-input" required placeholder="Create a password (min 6 chars)">
+        </div>
+        
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+          <span class="btn-text">Register</span>
+          <span class="loader btn-loader hidden"></span>
+        </button>
+      </form>
+
+      <div class="auth-link">
+        Already have an account? <a href="login.html">Sign in</a>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast" class="toast hidden">
+    <span class="toast-icon"></span>
+    <span class="toast-message"></span>
+  </div>
+
+  <script src="js/auth.js"></script>
+</body>
+</html>

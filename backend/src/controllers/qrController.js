@@ -52,6 +52,7 @@ exports.createQR = async (req, res, next) => {
     // Create QR code in database
     const qrCode = await QRCode.create({
       qr_code_id,
+      user: req.user.id,
       name: name || 'Untitled QR',
       target_url,
       type: type || 'url',
@@ -91,7 +92,7 @@ exports.getAllQRs = async (req, res, next) => {
     const skip = (page - 1) * limit;
 
     // Build query based on status filter
-    let query = {};
+    let query = { user: req.user.id };
     const now = new Date();
 
     if (status === 'active') {
@@ -153,7 +154,7 @@ exports.getQR = async (req, res, next) => {
   try {
     const { qrCodeId } = req.params;
 
-    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId });
+    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId, user: req.user.id });
 
     if (!qrCode) {
       return res.status(404).json({
@@ -200,7 +201,7 @@ exports.updateQR = async (req, res, next) => {
     const { target_url, name, is_active, expires_at } = req.body;
 
     // Find the QR code
-    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId });
+    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId, user: req.user.id });
 
     if (!qrCode) {
       return res.status(404).json({
@@ -258,7 +259,7 @@ exports.deleteQR = async (req, res, next) => {
   try {
     const { qrCodeId } = req.params;
 
-    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId });
+    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId, user: req.user.id });
 
     if (!qrCode) {
       return res.status(404).json({
@@ -291,8 +292,8 @@ exports.getQRStats = async (req, res, next) => {
     const { qrCodeId } = req.params;
     const { from, to, group_by } = req.query;
 
-    // Check if QR exists
-    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId });
+    // Check if QR exists and belongs to user
+    const qrCode = await QRCode.findOne({ qr_code_id: qrCodeId, user: req.user.id });
 
     if (!qrCode) {
       return res.status(404).json({

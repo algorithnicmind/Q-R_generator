@@ -3,11 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Create trackable QR codes with scan analytics, expiry control, and dynamic link updates."
-    />
-    <title>Smart QR Generator - Create Trackable QR Codes</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    
+    <!-- SEO Meta Tags -->
+    <title>Smart QR Generator | Free Dynamic QR Code Creator & Tracker</title>
+    <meta name="description" content="Create free dynamic QR codes with scan tracking, analytics, and expiry control. Best QR code generator for URLs, PDFs, and Forms. No expiry, lifetime validity." />
+    <meta name="keywords" content="QR code generator, dynamic QR code, free QR code, trackable QR, custom QR code, QR analytics, smart QR, QR code creator" />
+    <meta name="author" content="Smart QR Team" />
+    <link rel="canonical" href="https://q-r-generator.vercel.app/" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://q-r-generator.vercel.app/" />
+    <meta property="og:title" content="Smart QR Generator | Free Dynamic QR Code Creator" />
+    <meta property="og:description" content="Generate trackable QR codes that you can update anytime. Track scans, locations, and more for free." />
+    <meta property="og:image" content="https://q-r-generator.vercel.app/preview-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://q-r-generator.vercel.app/" />
+    <meta property="twitter:title" content="Smart QR Generator | Free Dynamic QR Code Creator" />
+    <meta property="twitter:description" content="Generate trackable QR codes that you can update anytime. Track scans, locations, and more for free." />
+    <meta property="twitter:image" content="https://q-r-generator.vercel.app/preview-image.png" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Smart QR Generator",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Create trackable QR codes with scan analytics, expiry control, and dynamic link updates."
+    }
+    </script>
+
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,12 +59,12 @@
         <span class="brand-name">Smart QR</span>
       </div>
       <div class="nav-links">
-        <a href="#generator" class="nav-link active" data-page="generator"
-          >Generator</a
-        >
-        <a href="#dashboard" class="nav-link" data-page="dashboard"
-          >Dashboard</a
-        >
+        <a href="#generator" class="nav-link active" data-page="generator">Generator</a>
+        <a href="#dashboard" class="nav-link" data-page="dashboard">Dashboard</a>
+        <div class="user-menu" style="display: flex; align-items: center; gap: 1rem; margin-left: 1rem; padding-left: 1rem; border-left: 1px solid var(--color-border);">
+          <span id="userDisplay" style="font-size: 0.875rem; font-weight: 500;"></span>
+          <button id="logoutBtn" class="btn btn-outline" style="padding: 0.25rem 0.75rem; font-size: 0.75rem;">Logout</button>
+        </div>
       </div>
     </nav>
 
@@ -175,6 +210,44 @@
                     <span class="info-value status-active">Active</span>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- SEO Content Section -->
+          <div class="seo-content" style="margin-top: 4rem; padding-top: 4rem; border-top: 1px solid var(--color-border);">
+            <div class="card" style="margin-bottom: 2rem;">
+              <h2 class="card-title text-center">Why Use Our Smart QR Generator?</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div class="feature-item text-center">
+                  <div style="font-size: 2.5rem; margin-bottom: 1rem;">📊</div>
+                  <h3>Track Every Scan</h3>
+                  <p class="text-muted">Get detailed analytics on who scans your QR codes, when, and how often.</p>
+                </div>
+                <div class="feature-item text-center">
+                  <div style="font-size: 2.5rem; margin-bottom: 1rem;">🔄</div>
+                  <h3>Dynamic Updates</h3>
+                  <p class="text-muted">Change the destination URL anytime without reprinting your QR code.</p>
+                </div>
+                <div class="feature-item text-center">
+                  <div style="font-size: 2.5rem; margin-bottom: 1rem;">⏰</div>
+                  <h3>Expiry Control</h3>
+                  <p class="text-muted">Set expiration dates for time-sensitive promotions or events.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-section">
+              <h2 class="title text-center" style="font-size: 2rem;">Frequently Asked Questions</h2>
+              <div class="card">
+                <h3 style="margin-bottom: 0.5rem;">Is this QR Code Generator free?</h3>
+                <p class="text-muted" style="margin-bottom: 1.5rem;">Yes! Our Smart QR Generator is 100% free to use for creating trackable, dynamic QR codes.</p>
+                
+                <h3 style="margin-bottom: 0.5rem;">Can I change the link after printing?</h3>
+                <p class="text-muted" style="margin-bottom: 1.5rem;">Absolutely. Since these are dynamic QR codes, you can update the target URL from your dashboard instantly.</p>
+                
+                <h3 style="margin-bottom: 0.5rem;">Do the QR codes expire?</h3>
+                <p class="text-muted">Only if you want them to! You can set an optional expiry date, otherwise they last forever.</p>
               </div>
             </div>
           </div>

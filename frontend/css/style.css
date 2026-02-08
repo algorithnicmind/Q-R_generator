@@ -845,3 +845,156 @@ a:hover {
     text-align: center;
   }
 }
+
+/* ===================================
+    Mobile Responsive & Modern UI Enhancements
+   =================================== */
+
+/* Glassmorphism for Cards */
+.card {
+  background: rgba(26, 26, 37, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Modern Inputs */
+.form-input, .form-select {
+  background: rgba(18, 18, 26, 0.6);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-input:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  /* Navigation */
+  .navbar {
+    padding: 0 var(--space-4);
+    height: 60px;
+  }
+  
+  .nav-brand .brand-name {
+    font-size: 1.25rem;
+  }
+  
+  .nav-links {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-bg-card);
+    padding: var(--space-3);
+    justify-content: space-around;
+    border-top: 1px solid var(--color-border);
+    z-index: 1000;
+  }
+  
+  .nav-link {
+    font-size: 0.75rem;
+    padding: var(--space-2) var(--space-4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .user-menu {
+    border-left: none !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  
+  #userDisplay {
+    display: none; /* Hide name on mobile to save space */
+  }
+
+  /* Main Content Spacing */
+  .main-content {
+    padding-top: 60px;
+    padding-bottom: 80px; /* Space for bottom nav */
+  }
+  
+  .container {
+    padding: 0 var(--space-4);
+  }
+  
+  /* Typography */
+  .title {
+    font-size: 2rem;
+  }
+  
+  /* Generator Layout */
+  .generator-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  /* Type Selector - Scrollable on mobile */
+  .type-selector {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: var(--space-2);
+    gap: var(--space-3);
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .type-btn {
+    min-width: 80px;
+    flex-shrink: 0;
+  }
+  
+  /* Touch Targets */
+  .btn, .form-input, .type-btn {
+    min-height: 48px; /* Easier to tap */
+  }
+  
+  /* Dashboard */
+  .dashboard-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--space-4);
+  }
+  
+  .dashboard-actions {
+    flex-direction: column;
+  }
+  
+  .qr-item {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: var(--space-4);
+  }
+  
+  .qr-item-preview {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .qr-item-meta {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .qr-item-actions {
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .qr-item-actions .btn {
+    flex: 1;
+  }
+  
+  /* Modal */
+  .modal-content {
+    width: 95%;
+    padding: var(--space-4);
+    max-height: 85vh;
+  }
+}
+

@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 
 // Import routes
+const authRoutes = require('./src/routes/authRoutes');
 const qrRoutes = require('./src/routes/qrRoutes');
 const redirectRoutes = require('./src/routes/redirectRoutes');
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../frontend')));
 
 // API Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/qr', qrRoutes);
 
 // Redirect Route (for QR scans)

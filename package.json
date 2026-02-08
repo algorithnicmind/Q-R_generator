@@ -17,9 +17,11 @@
   "author": "Ankit",
   "license": "MIT",
   "dependencies": {
+    "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.3",
     "mongoose": "^8.10.1",
     "qrcode": "^1.5.4",
     "uuid": "^9.0.0"
