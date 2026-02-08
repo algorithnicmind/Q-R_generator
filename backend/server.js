@@ -8,13 +8,15 @@ const PORT = process.env.PORT || 3000;
 connectDB();
 
 // Start server
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
 ║   🔳 Smart QR Generator Server                            ║
 ║                                                           ║
-║   Server running on: http://localhost:${PORT}               ║
+║   Server running on: http://0.0.0.0:${PORT}                 ║
+║   Local Access:      http://localhost:${PORT}               ║
+║   Network Access:    ${process.env.BASE_URL}                ║
 ║   Environment: ${process.env.NODE_ENV || "development"}                            ║
 ║                                                           ║
 ║   API Endpoints:                                          ║
