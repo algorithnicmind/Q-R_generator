@@ -3,6 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
 [![MongoDB](https://img.shields.io/badge/MongoDB-6.0+-brightgreen.svg)](https://www.mongodb.com/)
+[![Live Demo](https://img.shields.io/badge/demo-online-green.svg)](https://q-r-generator.vercel.app/)
+
+> 🚀 **Live Demo:** [https://q-r-generator.vercel.app/](https://q-r-generator.vercel.app/)
 
 A web-based QR code generator system that creates trackable, controllable, and dynamic QR codes. Unlike traditional static QR generators, this system enables **scan tracking**, **QR expiry**, and **link updates without reprinting**.
 
@@ -10,14 +13,14 @@ A web-based QR code generator system that creates trackable, controllable, and d
 
 ## ✨ Key Features
 
-| Feature | Description |
-|---------|-------------|
+| Feature                    | Description                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
 | 🎯 **Dynamic Redirection** | QR code destination can be changed without modifying the QR image |
-| 📊 **Scan Tracking** | Track total scans, timestamps, and scan history |
-| ⏰ **Expiry Control** | Set expiration dates for QR codes |
-| 🔒 **Status Management** | Enable/disable QR codes instantly |
-| 📱 **Multi-Type Support** | Generate QR for URLs, Forms, Videos, Documents |
-| 📈 **Dashboard** | View and manage all QR codes in one place |
+| 📊 **Scan Tracking**       | Track total scans, timestamps, and scan history                   |
+| ⏰ **Expiry Control**      | Set expiration dates for QR codes                                 |
+| 🔒 **Status Management**   | Enable/disable QR codes instantly                                 |
+| 📱 **Multi-Type Support**  | Generate QR for URLs, Forms, Videos, Documents                    |
+| 📈 **Dashboard**           | View and manage all QR codes in one place                         |
 
 ---
 
@@ -115,17 +118,19 @@ Q-R_generator/
 ## 🔌 API Reference
 
 ### Generate QR Code
+
 ```http
 POST /api/qr
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
+| Parameter    | Type     | Description                       |
+| ------------ | -------- | --------------------------------- |
 | `target_url` | `string` | **Required**. The destination URL |
-| `name` | `string` | Optional. QR code name |
-| `expires_at` | `date` | Optional. Expiry date |
+| `name`       | `string` | Optional. QR code name            |
+| `expires_at` | `date`   | Optional. Expiry date             |
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -138,17 +143,21 @@ POST /api/qr
 ```
 
 ### Scan & Redirect
+
 ```http
 GET /q/:qrCodeId
 ```
+
 Logs the scan and redirects to target URL.
 
 ### Get QR Stats
+
 ```http
 GET /api/qr/:qrCodeId/stats
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -163,25 +172,26 @@ GET /api/qr/:qrCodeId/stats
 ```
 
 ### Update QR Status
+
 ```http
 PATCH /api/qr/:qrCodeId
 ```
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `is_active` | `boolean` | Enable/disable QR |
-| `target_url` | `string` | New destination URL |
+| Parameter    | Type      | Description         |
+| ------------ | --------- | ------------------- |
+| `is_active`  | `boolean` | Enable/disable QR   |
+| `target_url` | `string`  | New destination URL |
 
 ---
 
 ## 🎨 QR Types Supported
 
-| Type | Example Use Case |
-|------|------------------|
-| 🔗 **URL** | Website links, landing pages |
-| 📝 **Form** | Google Forms, surveys |
-| 🎬 **Video** | YouTube links, video content |
-| 📄 **Document** | PDFs, Google Drive files |
+| Type            | Example Use Case             |
+| --------------- | ---------------------------- |
+| 🔗 **URL**      | Website links, landing pages |
+| 📝 **Form**     | Google Forms, surveys        |
+| 🎬 **Video**    | YouTube links, video content |
+| 📄 **Document** | PDFs, Google Drive files     |
 
 ---
 
@@ -197,12 +207,12 @@ PATCH /api/qr/:qrCodeId
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|-------|------------|
-| Frontend | HTML, CSS, JavaScript |
-| Backend | Node.js, Express.js |
-| Database | MongoDB |
-| QR Generation | qrcode.js |
+| Layer         | Technology            |
+| ------------- | --------------------- |
+| Frontend      | HTML, CSS, JavaScript |
+| Backend       | Node.js, Express.js   |
+| Database      | MongoDB               |
+| QR Generation | qrcode.js             |
 
 ---
 

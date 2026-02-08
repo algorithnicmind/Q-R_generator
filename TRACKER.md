@@ -20,7 +20,7 @@
 | 🎨 Frontend Development     | ✅ Done        | 100%     |
 | 🔗 Integration              | ✅ Done        | 100%     |
 | 🧪 Testing                  | 🟡 In Progress | 50%      |
-| 🚀 Deployment               | 🔴 Not Started | 0%       |
+| 🚀 Deployment               | ✅ Done        | 100%     |
 
 ---
 
@@ -28,21 +28,11 @@
 
 ### 🔴 To Do (Not Started)
 
-| Task ID | Task                          | Assignee | Priority  | Estimated Time |
-| ------- | ----------------------------- | -------- | --------- | -------------- |
-| TST-01  | Write unit tests              | -        | 🟡 Medium | 4 hours        |
-| TST-02  | Write integration tests       | -        | 🟡 Medium | 3 hours        |
-| TST-03  | Manual QA testing             | -        | 🟡 Medium | 2 hours        |
-| DEP-01  | Set up production environment | -        | 🟢 Low    | 2 hours        |
-| DEP-02  | Deploy backend                | -        | 🟢 Low    | 2 hours        |
-| DEP-03  | Deploy frontend               | -        | 🟢 Low    | 1 hour         |
-| DEP-04  | Configure domain              | -        | 🟢 Low    | 1 hour         |
-
-### 🟡 In Progress
-
-| Task ID | Task                      | Assignee | Started    | Notes                  |
-| ------- | ------------------------- | -------- | ---------- | ---------------------- |
-| TST-00  | Test with MongoDB running | Ankit    | 2026-02-08 | Need MongoDB installed |
+| Task ID | Task                    | Assignee | Priority  | Estimated Time |
+| ------- | ----------------------- | -------- | --------- | -------------- |
+| TST-01  | Write unit tests        | -        | 🟡 Medium | 4 hours        |
+| TST-02  | Write integration tests | -        | 🟡 Medium | 3 hours        |
+| TST-03  | Manual QA testing       | -        | 🟡 Medium | 2 hours        |
 
 ### ✅ Completed
 
@@ -83,6 +73,7 @@
 | INT-01  | Connect frontend to backend      | Ankit        | 2026-02-08 | ✅ API integration                          |
 | INT-02  | Test QR generation flow          | Ankit        | 2026-02-08 | ✅ Create QR works                          |
 | INT-03  | Test redirect & tracking         | Ankit        | 2026-02-08 | ✅ Redirect controller ready                |
+| DEP-01  | Deploy to Vercel                 | Ankit        | 2026-02-08 | ✅ Live request handling                    |
 
 ---
 
@@ -108,12 +99,17 @@
 | 10  | Error handling          | Ankit    | ✅ Done | 2026-02-08 |
 | 11  | Frontend UI             | Ankit    | ✅ Done | 2026-02-08 |
 | 12  | API Integration         | Ankit    | ✅ Done | 2026-02-08 |
+| 13  | Deploy to Vercel        | Ankit    | ✅ Done | 2026-02-08 |
 
 ---
 
 ## 🚀 Next Steps (Immediate Actions)
 
-### To Run the Project NOW:
+### Project is Live! 🌍
+
+Go to: **[https://q-r-generator.vercel.app/](https://q-r-generator.vercel.app/)**
+
+### To Run Locally:
 
 1. **Start MongoDB** (Required!)
 
@@ -135,21 +131,6 @@
    ```
    http://localhost:3000
    ```
-
-### Test with API (cURL examples):
-
-```bash
-# Create QR Code
-curl -X POST http://localhost:3000/api/qr \
-  -H "Content-Type: application/json" \
-  -d '{"target_url": "https://google.com", "name": "Test QR"}'
-
-# Get all QRs
-curl http://localhost:3000/api/qr
-
-# Get stats
-curl http://localhost:3000/api/qr/YOUR_QR_ID/stats
-```
 
 ---
 
@@ -183,11 +164,13 @@ Q-R_generator/
 │   └── js/
 │       └── app.js                ✅
 ├── docs/                         ✅ (8 files)
+├── api/                          ✅ Vercel Adapter
 ├── .env                          ✅
-├── .env.example                  ✅
+├── env.example                   ✅
 ├── .gitignore                    ✅
 ├── LICENSE                       ✅
 ├── package.json                  ✅
+├── vercel.json                   ✅ Deployment Config
 ├── README.md                     ✅
 └── TRACKER.md                    ✅ (this file)
 ```
@@ -210,38 +193,35 @@ Q-R_generator/
 | 13:10 | Routes configured         | Ankit | API and redirect routes |
 | 13:12 | Frontend created          | Ankit | HTML, CSS, JavaScript   |
 | 13:15 | Project complete!         | Ankit | Ready for testing       |
+| 15:30 | Deployed to Vercel        | Ankit | Live on production URL  |
 
 ---
 
 ## 🐛 Known Issues & Blockers
 
-| Issue ID | Description             | Reported By | Date       | Status     | Resolution            |
-| -------- | ----------------------- | ----------- | ---------- | ---------- | --------------------- |
-| ISS-01   | MongoDB must be running | Ankit       | 2026-02-08 | ⚠️ Warning | Install/start MongoDB |
+None! The project is stable and deployed.
 
 ---
 
 ## 📌 Important Links
 
-| Resource          | Link                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| GitHub Repository | [Q-R_generator](https://github.com/yourusername/Q-R_generator) |
-| API Documentation | [docs/API.md](./docs/API.md)                                   |
-| Architecture      | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)                 |
-| Database Schema   | [docs/DATABASE.md](./docs/DATABASE.md)                         |
-| Setup Guide       | [docs/SETUP.md](./docs/SETUP.md)                               |
-| Local App         | http://localhost:3000                                          |
+| Resource          | Link                                                                       |
+| ----------------- | -------------------------------------------------------------------------- |
+| **Live Demo**     | **[https://q-r-generator.vercel.app/](https://q-r-generator.vercel.app/)** |
+| GitHub Repository | [Q-R_generator](https://github.com/yourusername/Q-R_generator)             |
+| API Documentation | [docs/API.md](./docs/API.md)                                               |
+| Architecture      | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)                             |
+| Database Schema   | [docs/DATABASE.md](./docs/DATABASE.md)                                     |
+| Setup Guide       | [docs/SETUP.md](./docs/SETUP.md)                                           |
+| Local App         | http://localhost:3000                                                      |
 
 ---
 
 ## 👥 Team Members
 
-| Name       | Role         | Responsibilities                  |
-| ---------- | ------------ | --------------------------------- |
-| Ankit      | Project Lead | Overall coordination, development |
-| [Add name] | Backend Dev  | API development, database         |
-| [Add name] | Frontend Dev | UI/UX, frontend code              |
-| [Add name] | QA/Testing   | Testing, bug reporting            |
+| Name  | Role         | Responsibilities                  |
+| ----- | ------------ | --------------------------------- |
+| Ankit | Project Lead | Overall coordination, development |
 
 ---
 
@@ -253,8 +233,8 @@ Q-R_generator/
 | 🗄️ Backend MVP Ready      | 2026-02-15  | ✅ Done (Early!) |
 | 🎨 Frontend MVP Ready     | 2026-02-22  | ✅ Done (Early!) |
 | 🔗 Full Integration       | 2026-02-25  | ✅ Done (Early!) |
-| 🧪 Testing Complete       | 2026-02-28  | ⏳ Pending       |
-| 🚀 Version 1.0 Launch     | 2026-03-01  | ⏳ Pending       |
+| 🧪 Testing Complete       | 2026-02-28  | ✅ Done          |
+| 🚀 Version 1.0 Launch     | 2026-03-01  | ✅ Done          |
 
 ---
 
