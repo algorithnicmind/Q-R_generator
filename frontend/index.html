@@ -131,9 +131,26 @@
                       placeholder="https://example.com/your-page"
                       required
                     />
-                    <span class="form-hint"
-                      >Enter the URL you want the QR code to redirect to</span
-                    >
+                    <span class="form-hint" id="urlHint">Enter the URL you want the QR code to redirect to</span>
+                  </div>
+
+                  <!-- File Upload (For Document/Video types) -->
+                  <div class="form-group hidden" id="fileUploadContainer">
+                    <label class="form-label" for="fileInput">Upload File *</label>
+                    <div class="file-upload-box" id="dropZone" style="border: 2px dashed var(--color-border); padding: 2rem; border-radius: var(--radius-md); text-align: center; cursor: pointer; transition: all var(--transition-fast);">
+                      <input type="file" id="fileInput" class="hidden" accept="image/*,video/*,application/pdf">
+                      <div class="drop-content">
+                        <span style="font-size: 2rem; display: block; margin-bottom: 0.5rem;">📂</span>
+                        <p id="fileName" style="color: var(--color-text-secondary);">Click to upload or drag & drop</p>
+                        <p class="text-muted" style="font-size: 0.75rem; margin-top: 0.5rem;">Max 5MB (Images, PDF, Video)</p>
+                      </div>
+                    </div>
+                    <div id="uploadProgressContainer" class="hidden" style="margin-top: 1rem;">
+                      <div style="height: 4px; background: var(--color-bg-secondary); border-radius: 2px; overflow: hidden;">
+                        <div id="uploadProgressBar" style="width: 0%; height: 100%; background: var(--color-accent-gradient);"></div>
+                      </div>
+                      <p id="uploadStatusText" class="text-muted" style="font-size: 0.75rem; margin-top: 0.5rem;">Uploading...</p>
+                    </div>
                   </div>
 
                   <!-- QR Name -->
@@ -213,8 +230,9 @@
             </div>
           </div>
           
+          
           <!-- SEO Content Section -->
-          <div class="seo-content" style="margin-top: 4rem; padding-top: 4rem; border-top: 1px solid var(--color-border);">
+          <div class="seo-content">
             <div class="card" style="margin-bottom: 2rem;">
               <h2 class="card-title text-center">Why Use Our Smart QR Generator?</h2>
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">

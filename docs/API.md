@@ -520,5 +520,35 @@ curl -X PATCH http://localhost:3000/api/qr/YOUR_QR_ID \
   -d '{"is_active": false}'
 
 # Delete QR
+# Delete QR
 curl -X DELETE http://localhost:3000/api/qr/YOUR_QR_ID
+```
+
+---
+
+## File Upload Endpoints
+
+### Upload Media
+
+Upload an image, video, or document to generate a public URL.
+
+```http
+POST /api/upload
+Content-Type: multipart/form-data
+Authorization: Bearer <token>
+```
+
+#### Request Body (Form Data)
+
+| Field  | Type   | Required | Description                  |
+| ------ | ------ | -------- | ---------------------------- |
+| `file` | `file` | ✅ Yes   | The file to upload (Max 5MB) |
+
+#### Success Response (200 OK)
+
+```json
+{
+  "status": "success",
+  "url": "https://res.cloudinary.com/demo/image/upload/v161405/sample.jpg"
+}
 ```

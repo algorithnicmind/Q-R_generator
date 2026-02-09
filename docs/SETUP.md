@@ -96,6 +96,20 @@ Open your browser and visit:
 - Frontend: `http://localhost:3000`
 - API Health: `http://localhost:3000/api/health`
 
+### 7. Configure Cloudinary (For File Uploads)
+
+To enable Video and Document QR codes, you need a free Cloudinary account.
+
+1.  Sign up at [cloudinary.com](https://cloudinary.com/) (Free Tier).
+2.  Get your **Cloud Name**, **API Key**, and **API Secret** from the dashboard.
+3.  Add them to your `.env` file:
+
+```env
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
 ---
 
 ## Environment Variables Reference

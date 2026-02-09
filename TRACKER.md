@@ -111,7 +111,9 @@
 | BE-14   | Create Auth Middleware      | Ankit        | 2026-02-08 | ✅ Protect routes with Bearer token |
 | FE-09   | Create Login/Register Pages | Ankit        | 2026-02-08 | ✅ Styled auth forms                |
 | FE-10   | Implement Auth Logic (JS)   | Ankit        | 2026-02-08 | ✅ Token storage, redirect, logout  |
-| INT-04  | Secure All API Routes       | Ankit        | 2026-02-08 | ✅ Multi-tenant data segregation    |
+| BE-15   | Implement File Upload API   | Ankit        | 2026-02-09 | ✅ Cloudinary + Multer              |
+| FE-11   | File Upload UI              | Ankit        | 2026-02-09 | ✅ Drag & Drop for Video/Docs       |
+| UI-01   | Fix Mobile Spacing          | Ankit        | 2026-02-09 | ✅ Optimized margins/padding        |
 
 ---
 

@@ -23,6 +23,8 @@ app.use(express.static(path.join(__dirname, '../frontend')));
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/qr', qrRoutes);
+const uploadRoutes = require('./src/routes/uploadRoutes');
+app.use('/api/upload', uploadRoutes);
 
 // Redirect Route (for QR scans)
 app.use('/q', redirectRoutes);

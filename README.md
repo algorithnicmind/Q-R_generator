@@ -20,6 +20,7 @@ A web-based QR code generator system that creates trackable, controllable, and d
 | ⏰ **Expiry Control**      | Set expiration dates for QR codes                                 |
 | 🔒 **Status Management**   | Enable/disable QR codes instantly                                 |
 | 📱 **Multi-Type Support**  | Generate QR for URLs, Forms, Videos, Documents                    |
+| 📁 **File Upload**         | Direct image/video/PDF upload via Cloudinary                      |
 | 📈 **Dashboard**           | View and manage all QR codes in one place                         |
 
 ---

@@ -66,6 +66,16 @@ const elements = {
   expiryDate: document.getElementById('expiryDate'),
   generateBtn: document.getElementById('generateBtn'),
   
+  // File Upload
+  fileInput: document.getElementById('fileInput'),
+  dropZone: document.getElementById('dropZone'),
+  fileName: document.getElementById('fileName'),
+  fileUploadContainer: document.getElementById('fileUploadContainer'),
+  urlHint: document.getElementById('urlHint'),
+  uploadProgressContainer: document.getElementById('uploadProgressContainer'),
+  uploadProgressBar: document.getElementById('uploadProgressBar'),
+  uploadStatusText: document.getElementById('uploadStatusText'),
+  
   // Preview
   qrPreview: document.getElementById('qrPreview'),
   qrActions: document.getElementById('qrActions'),
@@ -133,9 +143,84 @@ document.querySelectorAll('.type-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    elements.qrType.value = btn.dataset.type;
+    const type = btn.dataset.type;
+    elements.qrType.value = type;
+    
+    // Toggle File Upload Logic
+    const isFile = ['video', 'document'].includes(type);
+    
+    if (isFile) {
+       elements.fileUploadContainer.classList.remove('hidden');
+       elements.targetUrl.readOnly = true;
+       elements.targetUrl.value = '';
+       elements.targetUrl.placeholder = "Upload a file to generate URL";
+       elements.urlHint.textContent = "Upload a file above to auto-fill this URL";
+    } else {
+       elements.fileUploadContainer.classList.add('hidden');
+       elements.targetUrl.readOnly = false;
+       elements.targetUrl.placeholder = "https://example.com/your-page";
+       elements.urlHint.textContent = "Enter the URL you want the QR code to redirect to";
+    }
   });
 });
+
+// File Upload Handler
+if (elements.fileInput) {
+  elements.dropZone.addEventListener('click', () => elements.fileInput.click());
+  
+  elements.fileInput.addEventListener('change', async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('File size exceeds 5MB limit', 'error');
+      // Reset input
+      elements.fileInput.value = '';
+      return;
+    }
+    
+    // UI Updates
+    elements.fileName.textContent = file.name;
+    elements.uploadProgressContainer.classList.remove('hidden');
+    elements.uploadStatusText.textContent = "Uploading...";
+    elements.uploadProgressBar.style.width = '10%';
+    elements.uploadProgressBar.style.background = 'var(--color-accent-gradient)';
+    elements.generateBtn.disabled = true;
+    
+    try {
+        const formData = new FormData();
+        formData.append('file', file);
+        
+        // Use raw fetch to avoid adding Content-Type: application/json
+        const token = localStorage.getItem('token');
+        const response = await fetch(`${API_BASE}/upload`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            body: formData
+        });
+        
+        elements.uploadProgressBar.style.width = '100%';
+        
+        const result = await response.json();
+        
+        if (!response.ok) throw new Error(result.message || 'Upload failed');
+        
+        // Success
+        elements.uploadStatusText.textContent = "Upload Complete!";
+        elements.targetUrl.value = result.url;
+        showToast('File uploaded successfully!', 'success');
+        elements.generateBtn.disabled = false;
+        
+    } catch (error) {
+        showToast(error.message, 'error');
+        elements.uploadStatusText.textContent = "Upload Failed";
+        elements.uploadProgressBar.style.background = 'var(--color-error)';
+        elements.generateBtn.disabled = false;
+    }
+  });
+}
 
 // ===================================
 // QR Form Submission
@@ -288,13 +373,22 @@ function renderQRList(qrCodes) {
     const statusClass = !qr.is_active ? 'status-inactive' : isExpired ? 'status-expired' : 'status-active';
     const statusText = !qr.is_active ? 'Inactive' : isExpired ? 'Expired' : 'Active';
     
+    // Type Icon
+    const typeIcon = {
+      url: '🔗',
+      form: '📝',
+      video: '🎬',
+      document: '📄',
+      image: '🖼️'
+    }[qr.type] || '🔗';
+    
     return `
       <div class="qr-item" data-id="${qr.qr_code_id}">
         <div class="qr-item-preview">
           <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=${encodeURIComponent(window.location.origin + '/q/' + qr.qr_code_id)}" alt="QR">
         </div>
         <div class="qr-item-info">
-          <h3>${escapeHtml(qr.name)}</h3>
+          <h3>${typeIcon} ${escapeHtml(qr.name || 'Untitled QR')}</h3>
           <div class="qr-item-meta">
             <span class="stats-badge">📊 ${qr.total_scans || 0} scans</span>
             <span class="${statusClass}">${statusText}</span>
