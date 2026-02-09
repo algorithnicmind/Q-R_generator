@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 // Init Multer with limits
 const upload = multer({
   storage,
-  limits: { fileSize: 4.5 * 1024 * 1024 } // 4.5 MB limit for Vercel
+  limits: { fileSize: 9 * 1024 * 1024 } // 9 MB limit (Vercel allows up to 10MB)
 });
 
 // Define route (Protected by login)
