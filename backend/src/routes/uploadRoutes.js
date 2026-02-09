@@ -6,10 +6,12 @@ const { protect } = require('../middleware/auth');
 
 const router = express.Router();
 
+const os = require('os');
+
 // Define storage for Multer
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, '/tmp'); // Use /tmp for serverless environments (Vercel)
+    cb(null, os.tmpdir()); // Use system temp directory (works on Windows & Linux/Vercel)
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
