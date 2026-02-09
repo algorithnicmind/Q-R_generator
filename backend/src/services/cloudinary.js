@@ -14,11 +14,11 @@ cloudinary.config({
  * @param {string} folder - Folder name in Cloudinary
  * @returns {Promise<string>} - Secure URL of the uploaded file
  */
-const uploadFile = async (filePath, folder = 'qr-uploads') => {
+const uploadFile = async (filePath, folder = 'qr-uploads', resourceType = 'auto') => {
   try {
     const result = await cloudinary.uploader.upload(filePath, {
       folder: folder,
-      resource_type: "auto" // Detect if it's image/video/raw
+      resource_type: resourceType // 'auto' or specifically 'raw' for PDFs
     });
     
     // Clean up local file after upload
